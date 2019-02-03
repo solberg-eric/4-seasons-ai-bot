@@ -1,7 +1,7 @@
 from copy import deepcopy
-from three import *
-import random
-# random.seed(108)
+from evaluate import *
+from print_hand import *
+
 def lead_player():
     while True:
         response = input("Are you the starting player? (y/n): ")
@@ -176,8 +176,7 @@ def setup_next_trick(game):
     print("***** " + game["lead_player"] + " LEADS NEXT TRICK ******")
     print()
 
-def opponent_plays(game):
-    print("P2's hand: " + str(game["p2"].hand))    
+def opponent_plays(game): 
     while True:
         response = input("What card does P2 play? (enter as string): ")
         print()
@@ -237,8 +236,8 @@ def trick(game):
     play_order = determine_play_order(game)
     for i in range(2): #range(2) because each player plays twice per trick
         for player in play_order:   
+            print_hand(game["p1"].cards_in_play, game["p1"].hand, game["p2"].cards_in_play, game["p2"].hand, game["trump_order"])
             if player == "p1":
-                print("P1 hand: " + str(game["p1"].hand))
                 player_plays(game, get_best_play(game, i, player, play_order))
             else:
                 opponent_plays(game)
