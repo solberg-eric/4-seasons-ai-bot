@@ -285,7 +285,7 @@ def setup_game(depth):
     return game
 
 def lets_play_four_seasons(depth):
-    #depth *= 4
+    depth *= 4
     game = setup_game(depth)
     play_game(game)
     declare_winner(game)

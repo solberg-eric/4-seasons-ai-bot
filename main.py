@@ -5,4 +5,5 @@ from gameplay import *
 #for i in range(10):
 #        print()
 
-lets_play_four_seasons(4)
+# The argument value is the depth of the search (ie. n "tricks" deep).
+lets_play_four_seasons(1)
