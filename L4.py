@@ -2,7 +2,7 @@ from copy import deepcopy
 from L5 import *
 
 #4.0
-def print_player_hand(hand_unsorted, trump, player): # From 3.1
+def print_player_hand(hand_unsorted, trump, player, trick_pile): # From 3.1
     i = 0
     j = 0
     k = 0
@@ -37,11 +37,11 @@ def print_player_hand(hand_unsorted, trump, player): # From 3.1
             break
     if player == "p2":
         print("   P2 Hand   ")
-        print("_____________")
+        print("_____________   P2 Trick Pile: " + str(trick_pile))
     for i in range(d):
         print(" " + hand_sorted[i][0] + " " + hand_sorted[i][1] + " " + hand_sorted[i][2] + " " + hand_sorted[i][3])
     if player == "p1":
-        print("_____________")
+        print("_____________   P1 Trick Pile: " + str(trick_pile))
         print("   P1 Hand   ")
     print()
 

@@ -30,7 +30,7 @@ def trick(game): # From 1.1
     play_order = determine_play_order(game) # To 3.0
     for i in range(2): #range(2) because each player plays twice per trick
         for player in play_order:   
-            print_hand(game["p1"].cards_in_play, game["p1"].hand, game["p2"].cards_in_play, game["p2"].hand, game["trump_order"]) # To 3.1
+            print_hand(game["p1"].cards_in_play, game["p1"].hand, game["p1"].trick_pile, game["p2"].cards_in_play, game["p2"].hand, game["p2"].trick_pile, game["trump_order"]) # To 3.1
             if player == "p1":
                 player_plays(game, get_best_play(game, i, player, play_order)) # To 3.2, 3.3
             else:

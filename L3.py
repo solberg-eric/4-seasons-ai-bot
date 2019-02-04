@@ -9,11 +9,11 @@ def determine_play_order(game): # From 2.2
     return play_order
 
 #3.1
-def print_hand(player_one_cards_in_play, player_one_hand, player_two_cards_in_play, player_two_hand, trump): # From 2.2
-    print_player_hand(player_two_hand, trump, "p2") # To 4.0
+def print_hand(player_one_cards_in_play, player_one_hand, player_one_trick_pile, player_two_cards_in_play, player_two_hand, player_two_trick_pile, trump): # From 2.2
+    print_player_hand(player_two_hand, trump, "p2", player_two_trick_pile) # To 4.0
     print_player_cards_in_play(player_two_cards_in_play, "p2") # To 4.1
     print_player_cards_in_play(player_one_cards_in_play, "p1") # To 4.1
-    print_player_hand(player_one_hand, trump, "p1") # To 4.0
+    print_player_hand(player_one_hand, trump, "p1", player_one_trick_pile) # To 4.0
     # Testing values below.
 
     #fix order of p2 cards in play
@@ -47,7 +47,6 @@ def get_best_play(game, i, player, play_order): # From 2.2
     ##print("Goin' into the minimax with following Game Status...")
     #print_game_status(game)
     result = minimax(game) # To 4.4
-    print(result)
     return result
 
 #3.4
@@ -73,10 +72,6 @@ def setup_next_trick(game): # From 2.2, 5.4
     for player in players_list:
         game[player].cards_in_play_ranks = [0, 0]
     print("***** " + game["player_winning_trick"] + " WINS TRICK ******")
-    print()
-    print("P1's trick pile: " + str(game["p1"].trick_pile))
-    print("P2's trick pile: " + str(game["p2"].trick_pile))
-    print()
     print("***** " + game["lead_player"] + " LEADS NEXT TRICK ******")
     print()
 
