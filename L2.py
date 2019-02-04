@@ -1,4 +1,3 @@
-from copy import deepcopy
 from L3 import *
 
 #2.0
@@ -14,7 +13,7 @@ def lead_player(): # From 1.0
             break
 
 #2.1
-def has_won(game):  # From 1.1, 1.2, 5.0
+def has_won(game):  # From 1.1, 2.4, 5.0
     if len(game["p1"].hand) == 0:
         game["p1"].has_won = False
         game["p2"].has_won = True
@@ -52,3 +51,11 @@ def setup_next_hand(game): # From 1.1, 5.4
         game[player].cards_in_play_ranks = [0, 0]
         game[player].trick_pile = []
         arrange_cards_in_hand(game, player) # To 3.6
+
+#2.4
+def declare_winner(game): # From 1.1
+    if has_won(game): # To 2.1
+        if game["p1"].has_won:
+            print("Player One wins!")
+        else:
+            print("Player Two wins!")
