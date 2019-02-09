@@ -1,9 +1,11 @@
-def print_hand(player_one_cards_in_play, player_one_hand, player_one_trick_pile, player_two_cards_in_play, player_two_hand, player_two_trick_pile, trump): # From 2.2
+# From trick.play_trick()
+def print_hand(player_one_cards_in_play, player_one_hand, player_one_trick_pile, player_two_cards_in_play, player_two_hand, player_two_trick_pile, trump):
     print_player_hand(player_two_hand, trump, "p2", player_two_trick_pile)
     print_player_cards_in_play(player_two_cards_in_play, "p2")
     print_player_cards_in_play(player_one_cards_in_play, "p1")
     print_player_hand(player_one_hand, trump, "p1", player_one_trick_pile)
 
+# From self.print_hand()
 def print_player_hand(hand_unsorted, trump, player, trick_pile):
     i = 0
     j = 0
@@ -47,6 +49,7 @@ def print_player_hand(hand_unsorted, trump, player, trick_pile):
         print("   P1 Hand   ")
     print()
 
+# From self.print_hand()
 def print_player_cards_in_play(cards_in_play, player):
     if player == "p2":
         if len(cards_in_play) == 2:
@@ -74,3 +77,29 @@ def print_player_cards_in_play(cards_in_play, player):
             print("  1. ")
             print("  2. ")
             print() 
+
+# Only used when testing game state.
+def print_game_status(game):
+    print()
+    print("************ Game Status ************")
+    print()
+    print("p1 hand: " + str(game["p1"].hand))
+    print("p1 cards in play: " + str(game["p1"].cards_in_play))
+    print("p1 cards in play ranks: " + str(game["p1"].cards_in_play_ranks))
+    print("p1 trick pile: " + str(game["p1"].trick_pile))
+    print("p1 cost: " + str(game["p1"].cost))
+    print("p1 gain: " + str(game["p1"].gain))
+    print("p1 has won: " + str(game["p1"].has_won))
+    print()
+    print("p2 hand: " + str(game["p2"].hand))
+    print("p2 cards in play: " + str(game["p2"].cards_in_play))
+    print("p2 cards in play ranks: " + str(game["p2"].cards_in_play_ranks))
+    print("p2 trick pile: " + str(game["p2"].trick_pile))
+    print("p2 cost: " + str(game["p2"].cost))
+    print("p2 gain: " + str(game["p2"].gain))
+    print("p2 has won: " + str(game["p2"].has_won))
+    print()
+    print(game)
+    print()
+    print("*************************************")
+    print()

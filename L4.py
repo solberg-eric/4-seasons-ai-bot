@@ -1,7 +1,7 @@
 from copy import deepcopy
 from L5 import *
 
-#4.0
+#4.0asdfasdfasdf
 def print_player_hand(hand_unsorted, trump, player, trick_pile): # From 3.1
     i = 0
     j = 0
@@ -45,7 +45,7 @@ def print_player_hand(hand_unsorted, trump, player, trick_pile): # From 3.1
         print("   P1 Hand   ")
     print()
 
-#4.1
+#4.1asdfasdfasdf
 def print_player_cards_in_play(cards_in_play, player): # From 3.1
     if player == "p2":
         if len(cards_in_play) == 2:
@@ -74,11 +74,11 @@ def print_player_cards_in_play(cards_in_play, player): # From 3.1
             print("  2. ")
             print() 
 
-#4.2
+#4.2asdfasdfsdf
 def play_card(game, card_index, player): # From 3.2, 3.4
     game[player].cards_in_play.append(game[player].hand.pop(card_index))
 
-#4.3
+#4.3sadfsdfasf
 def reset_values_for_minimax(game, i, player, play_order): # From 3.3
     if i == 0 and play_order.index(player) == 0:
         game["depth"] = 4
@@ -94,7 +94,7 @@ def reset_values_for_minimax(game, i, player, play_order): # From 3.3
     game["beta"] = float("Inf")
     game["player_optimizing"] : "p1"
 
-#4.4
+#4.4asdfasdfsf
 def minimax(game): # From 3.3
     player = game["player_optimizing"]
     if check_if_someone_has_won_or_if_game_depth_is_zero(game): # To 5.0
@@ -121,7 +121,7 @@ def minimax(game): # From 3.3
 #   - determine_winner_of_trick()
 #   - add_cards_to_trick_pile()
 
-#4.5
+#4.5asdfasdfas
 def determine_winner_of_trick(game): # From 3.5, 6.0
     set_card_ranks(game) # To 5.8 #set ranks of cards in play
     second_player = "p2"
@@ -139,7 +139,7 @@ def determine_winner_of_trick(game): # From 3.5, 6.0
         game["player_winning_trick"] = second_player
         winning_card_value = game[second_player].cards_in_play_ranks[1]
 
-#4.6
+#4.6asfasdfasdfa
 def add_cards_to_trick_pile(game): # From 3.5
     for i in range(2):
         game[game["player_winning_trick"]].trick_pile.append(game["p1"].cards_in_play.pop())

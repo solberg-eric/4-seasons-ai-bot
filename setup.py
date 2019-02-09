@@ -1,5 +1,6 @@
 """Instantiates necessary variables and prepares for game"""
 
+# From main
 def setup_game(depth_factor):
     class Player:
         def __init__(self, hand, cards_in_play, cards_in_play_ranks, trick_pile, cost, gain, has_won):
@@ -22,11 +23,23 @@ def setup_game(depth_factor):
         "alpha" : -float("Inf"),
         "beta" : float("Inf"),
         "trump_order" : ["Hearts", "Spades", "Diamonds", "Clubs"],
-        "lead_player" : lead_player(), # To 2.0
-        "lead_suit" : None, #"H", "S", "D", or "C"
-        "player_winning_trick" : None, #eventually "p1" or "p2"
+        "lead_player" : lead_player(),
+        "lead_suit" : None, # "H", "S", "D", or "C"
+        "player_winning_trick" : None, # Eventually going to be "p1" or "p2"
         "hand_finished" : False,
         "value" : 0,
         "player_optimizing" : "p1"
     }
     return game
+
+# From self.setup_game
+def lead_player():
+    while True:
+        response = input("Are you the starting player? (y/n): ")
+        print()
+        if response == "y":
+            return "p1"
+            break
+        elif response == "n":
+            return "p2"
+            break

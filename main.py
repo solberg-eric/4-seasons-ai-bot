@@ -1,19 +1,17 @@
 """Main"""
 
 import setup
+import winner
 import trick
-from next_hand
-from gameflow import *
+import hand
 
-def lets_play_four_seasons(depth):
-    game = setup.setup_game(depth)
-    play_game(game)
+depth = 1
+    
+game = setup.setup_game(depth)
 
-def play_game(game):
-    while not has_won(game): # To 2.1
-        while not game["hand_finished"]:
-            trick.play_trick(game)
-        next_hand.setup_next_hand(game) # To 2.3
-    declare_winner(game) # To 2.4
+while not winner.has_won(game):
+    while not game["hand_finished"]:
+        trick.play_trick(game)
+    hand.setup_next_hand(game)
 
-lets_play_four_seasons(1)
+winner.declare_winner(game)

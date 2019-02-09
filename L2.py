@@ -1,6 +1,6 @@
 from L3 import *
 
-#2.0
+#2.0asdfasdf
 def lead_player(): # From 1.0
     while True:
         response = input("Are you the starting player? (y/n): ")
@@ -12,7 +12,7 @@ def lead_player(): # From 1.0
             return "p2"
             break
 
-#2.1
+#2.1asdasdf
 def has_won(game):  # From 1.1, 2.4, 5.0
     if len(game["p1"].hand) == 0:
         game["p1"].has_won = False
@@ -25,7 +25,7 @@ def has_won(game):  # From 1.1, 2.4, 5.0
     else:
         return False
 
-#2.2
+#2.2asdasdf
 def trick(game): # From 1.1
     play_order = determine_play_order(game) # To 3.0
     for i in range(2): #range(2) because each player plays twice per trick
@@ -40,7 +40,7 @@ def trick(game): # From 1.1
     setup_next_trick(game) # To 3.5
     #print_game_status(game)
 
-#2.3
+#2.3asdf
 def setup_next_hand(game): # From 1.1, 5.4
     players_list = ["p1", "p2"]
     game["trump_order"].append(game["trump_order"].pop(0))
@@ -52,7 +52,7 @@ def setup_next_hand(game): # From 1.1, 5.4
         game[player].trick_pile = []
         arrange_cards_in_hand(game, player) # To 3.6
 
-#2.4
+#2.4asdfasf
 def declare_winner(game): # From 1.1
     if has_won(game): # To 2.1
         if game["p1"].has_won:
