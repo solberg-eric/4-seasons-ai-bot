@@ -1,5 +1,6 @@
-#1.0
-def setup_game(depth_factor): # From 0.0
+"""Instantiates necessary variables and prepares for game"""
+
+def setup_game(depth_factor):
     class Player:
         def __init__(self, hand, cards_in_play, cards_in_play_ranks, trick_pile, cost, gain, has_won):
             self.hand = hand
@@ -9,12 +10,10 @@ def setup_game(depth_factor): # From 0.0
             self.cost = cost
             self.gain = gain
             self.has_won = has_won
-    #p1 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
-    #p2 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
-    #p1 = Player(["AH", "KH", "AS", "KS", "AD", "KD", "AC", "KC"], [], [0, 0], [], 0, 0, False)
-    #p2 = Player(["AH", "KH", "AS", "KS", "AD", "KD", "AC", "KC"], [], [0, 0], [], 0, 0, False)
-    p1 = Player(["AH", "KH", "QH", "AS", "KS", "QS", "AD", "KD", "QD", "AC", "KC", "QC"], [], [0, 0], [], 0, 0, False)
-    p2 = Player(["AH", "KH", "QH", "AS", "KS", "QS", "AD", "KD", "QD", "AC", "KC", "QC"], [], [0, 0], [], 0, 0, False)    
+
+    p1 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
+    p2 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
+
     game = {
         "p1" : p1,
         "p2" : p2,
