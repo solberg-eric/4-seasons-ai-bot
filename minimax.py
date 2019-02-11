@@ -1,3 +1,5 @@
+"""Minimax alrogithm with alpha beta pruning."""
+
 from copy import deepcopy
 import card
 import winner
@@ -7,6 +9,7 @@ import hand
 
 # From trick.play_trick()
 def get_best_play(game, i, player, play_order):
+    """Interface between the minimax algorithm and the rest of the project."""
     reset_values_for_minimax(game, i, player, play_order)
     result = minimax(game)
     return result
@@ -29,8 +32,9 @@ def reset_values_for_minimax(game, i, player, play_order):
 
 # From self.get_best_play()
 def minimax(game):
+    """The minimax algorithm. Calls itself many times until each potential game state is evaluated."""
     player = game["player_optimizing"]
-    if check_if_someone_has_won_or_if_game_depth_is_zero(game):
+    if check_if_someone_has_won_or_if_game_depth_is_zero(game): # True only at 'leaves' of tree.
         return update_current_value(game) # values the game position
     best_value, best_play = update_pre_values(game, player)
     for play in game[player].hand:
@@ -43,7 +47,7 @@ def minimax(game):
         hypothetical_value = minimax(temp_game_status)[0]
         best_value, best_play = update_post_values(game, hypothetical_value, best_value, best_play, play, player)
         can_prune = prune_if_possible(game)
-        if can_prune:
+        if can_prune: # if True, prunes via alpha beta pruning.
             break
     return [best_value, best_play]
 

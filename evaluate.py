@@ -1,13 +1,15 @@
+"""Evaluates potential game states from minimax algorithm"""
+
 import trick
 
-# From minimax.update_current_value(), minimax.if_trick_complete()
+# From minimax.update_current_value() or minimax.if_trick_complete()
 def evaluate_game(game):
     determine_winner_of_trick(game)
     determine_gain(game)
     determine_cost(game)
     return (game["p1"].gain - game["p1"].cost) - (game["p2"].gain - game["p2"].cost)
 
-# From trick.setup_next_trick(), self.evaluate_game()
+# From trick.setup_next_trick() or self.evaluate_game()
 def determine_winner_of_trick(game):
     set_card_ranks(game) # Set ranks of cards in play
     second_player = "p2"
@@ -27,6 +29,7 @@ def determine_winner_of_trick(game):
 
 # From self.determine_winner_of_trick()
 def set_card_ranks(game):
+    """Set the ranks of the cards (to determine which cards beat which cards during the trick)"""
     players_list = ["p1", "p2"]
     for player in players_list:
         for card in game[player].cards_in_play:
@@ -51,6 +54,7 @@ def set_card_ranks(game):
 
 # From self.evaluate_game()
 def determine_gain(game):
+    """Determine the benefit of the game state for the player"""
     players_list = ["p1", "p2"]
     for player in players_list:
         for card in game[player].cards_in_play:
@@ -73,6 +77,7 @@ def determine_gain(game):
 
 # From self.evaluate_game()
 def determine_cost(game):
+    """Determine the cost of the state for the player"""
     players_list = ["p1", "p2"]
     for player in players_list:
         for card in game[player].cards_in_play:

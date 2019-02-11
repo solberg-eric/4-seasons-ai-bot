@@ -1,12 +1,12 @@
-""" Prepares for game. """
+"""Prepares for game."""
 
 # From main
 def setup_game(depth_factor):
-    """Prepares for game.
+    """Prepare for game.
 
     Args: 
         depth_factor (int): The depth of search (in tricks) for the minimax algorithm.
-        
+
     Returns: 
         game (dict): Stores frequently used values pertaining to the game.
     """
@@ -24,7 +24,7 @@ def setup_game(depth_factor):
     p1 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
     p2 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
 
-    # Stores frequently used values pertaining to the game.
+    # Store frequently used values pertaining to the game.
     game = {
         "p1" : p1,
         "p2" : p2,

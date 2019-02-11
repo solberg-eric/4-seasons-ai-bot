@@ -1,6 +1,8 @@
+"""Contains functions to prepare game for a new hand"""
+
 from copy import deepcopy
 
-# From main, minimax.if_trick_complete()
+# From main or minimax.if_trick_complete()
 def setup_next_hand(game):
     players_list = ["p1", "p2"]
     game["trump_order"].append(game["trump_order"].pop(0))

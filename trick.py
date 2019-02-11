@@ -1,4 +1,4 @@
-"""Play a trick"""
+"""Play a trick."""
 
 import display
 import minimax
@@ -7,9 +7,13 @@ import card
 
 # From main
 def play_trick(game):
+    """Play a trick. Returns: none."""
     play_order = determine_play_order(game)
-    for i in range(2): # range(2) because each player plays twice per trick
-        for player in play_order:   
+
+    # A trick.
+    for i in range(2): # Loop twice for each trick because both players play twice per trick.
+        # Each player play once.
+        for player in play_order: # Loop twice. For each loop, one player plays once. Is ultimately looped four times (if you include the parent 'for' loop) because each player plays two times.
             display.print_hand(game["p1"].cards_in_play, game["p1"].hand, game["p1"].trick_pile, game["p2"].cards_in_play, game["p2"].hand, game["p2"].trick_pile, game["trump_order"])
             if player == "p1":
                 player_plays(game, minimax.get_best_play(game, i, player, play_order))
@@ -17,6 +21,7 @@ def play_trick(game):
                 opponent_plays(game)
             if play_order.index(player) == 0 and i == 0:
                 game["lead_suit"] = game[game["lead_player"]].cards_in_play[0][1]
+
     setup_next_trick(game)
 
 # From self.play_trick()
@@ -29,6 +34,7 @@ def determine_play_order(game):
 
 # From self.play_trick()
 def player_plays(game, result):
+    """Player 1 play a card."""
     print("Best play: " + str(result[1]))
     print("Resulting value: " + str(result[0]))
     while True:
@@ -41,6 +47,7 @@ def player_plays(game, result):
 
 # From self.play_trick()
 def opponent_plays(game):
+    """Player 2 play a card."""
     while True:
         response = input("What card does P2 play? (enter as string): ")
         print()
@@ -49,8 +56,9 @@ def opponent_plays(game):
             card.play_card(game, card_index, "p2")
             break
 
-# From self.play_trick(), minimax.if_trick_complete()
+# From self.play_trick() or minimax.if_trick_complete()
 def setup_next_trick(game):
+    """Prepare the game for the next trick."""
     players_list = ["p1", "p2"]
     if len(game["p1"].hand) == 0 or len(game["p2"].hand) == 0:
         game["hand_finished"] = True

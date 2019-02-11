@@ -1,4 +1,4 @@
-""" Main script. """
+"""Main script."""
 
 import setup
 import winner
