@@ -1,14 +1,66 @@
 """Updates pygame display."""
 
+import pygame
+from pygame.locals import *
+import os
+
+# Setup pygame.
+pygame.init()
+screen_size = (1250, 700)
+screen = pygame.display.set_mode(screen_size)
+background = pygame.transform.scale(pygame.image.load("images/background.jpeg").convert(), screen_size)
 cards_in_play_rects = {
-    "p1c1" : pygame.Rect((230, 360), (184, 250)),
-    "p1c2" : pygame.Rect((255, 377), (184, 250)),
-    "p2c1" : pygame.Rect((230, 90), (184, 250)),
-    "p2c2" : pygame.Rect((205, 73), (184, 250))
+    "p2c1" : pygame.Rect((230, 360), (184, 250)),
+    "p2c2" : pygame.Rect((255, 377), (184, 250)),
+    "p1c1" : pygame.Rect((230, 90), (184, 250)),
+    "p1c2" : pygame.Rect((205, 73), (184, 250))
 }
 
+# From setup.setup_game()
+def create_hand(player_num): # pygame
+    # Add cards to Player 1's or Player 2's hand
+    hand = {}
+    for filename in os.listdir("images"):
+        path_to_image = "images/" + filename
+        if filename.startswith(player_num):
+            card = pygame.image.load(path_to_image).convert()
+            card_name = filename[1:3]
+            hand[card_name] = card
+    return hand
 
+# P2 (user) has cards labeled w/ #1
+p2_images = create_hand("1")
+# P1 (computer) has cards labeled w/ #2
+p1_images = create_hand("2")
 
+def blit_game(game):
+    """Update display of entire game."""
+    # Blit background
+    screen.blit(background, (0,0))
+    # Blit Player 2's (user) hand
+    for i in range(len(game["p2"].hand)):
+        screen.blit(p2_images[game["p2"].hand[i]], ((i+1)*27, 648))
+    # Blit Player 1's (computer) hand
+    for i in range(len(game["p1"].hand)-1, -1, -1):
+        screen.blit(p1_images[game["p1"].hand[i]], (i*27+27, -198))
+    # Blit Player 2's (user) cards_in_play:
+    if len(game["p2"].cards_in_play) >= 1:
+        screen.blit(p2_images[game["p2"].cards_in_play[0]], game["cards_in_play_rects"]["p2c1"])
+    if len(game["p2"].cards_in_play) >= 2:
+        screen.blit(p2_images[game["p2"].cards_in_play[1]], game["cards_in_play_rects"]["p2c2"])
+    # Blit Player 1's (computer) cards_in_play:
+    if len(game["p1"].cards_in_play) >= 1:
+        screen.blit(p1_images[game["p1"].cards_in_play[0]], game["cards_in_play_rects"]["p1c1"])
+    if len(game["p1"].cards_in_play) >= 2:
+        screen.blit(p1_images[game["p1"].cards_in_play[1]], game["cards_in_play_rects"]["p1c2"])
+    # Blit Player 2's (user) trick_pile:
+#    for i in range(len(game["p2"].trick_pile)):
+#        screen.blit(p2_images[game["p2"].trick_pile[i]], ((i+1)*27, 648))
+    # Blit Player 1's (computer) trick_pile:
+#    for i in range(len(game["p1"].hand)-1, -1, -1):
+#        screen.blit(p1_images[game["p1"].trick_pile[i]], (i*27+27, -198))
+
+    pygame.display.flip()
 
 
 

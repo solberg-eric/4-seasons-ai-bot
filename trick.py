@@ -14,7 +14,7 @@ def play_trick(game):
     for i in range(2): # Loop twice for each trick because both players play twice per trick.
         # Each player play once.
         for player in play_order: # Loop twice. For each loop, one player plays once. Is ultimately looped four times (if you include the parent 'for' loop) because each player plays two times.
-            # update pygame display after every play
+            display.blit_game(game)
             display.print_hand(game["p1"].cards_in_play, game["p1"].hand, game["p1"].trick_pile, game["p2"].cards_in_play, game["p2"].hand, game["p2"].trick_pile, game["trump_order"])
             if player == "p2":
                 your_turn(game)
@@ -56,8 +56,8 @@ def your_turn(game):
 # From self.play_trick()
 def computer_plays(game, result):
     """Player 1 play a card."""
-card_index = game["p1"].hand.index(result[1])
-card.play_card(game, card_index, "p1")
+    card_index = game["p1"].hand.index(result[1])
+    card.play_card(game, card_index, "p1")
 
 # From self.play_trick() or minimax.if_trick_complete()
 def setup_next_trick(game):
