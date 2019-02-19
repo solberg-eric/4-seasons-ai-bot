@@ -33,8 +33,10 @@ p2_images = create_hand("1")
 # P1 (computer) has cards labeled w/ #2
 p1_images = create_hand("2")
 
+# From trick.play_trick()
 def blit_game(game):
     """Update display of entire game."""
+    print("blitting")
     # Blit background
     screen.blit(background, (0,0))
     # Blit Player 2's (user) hand
@@ -45,13 +47,17 @@ def blit_game(game):
         screen.blit(p1_images[game["p1"].hand[i]], (i*27+27, -198))
     # Blit Player 2's (user) cards_in_play:
     if len(game["p2"].cards_in_play) >= 1:
+        print("blitting p2's 1st card now: " + game["p2"].cards_in_play[0])
         screen.blit(p2_images[game["p2"].cards_in_play[0]], cards_in_play_rects["p2c1"])
     if len(game["p2"].cards_in_play) >= 2:
+        print("blitting p2's 2nd card now: " + game["p2"].cards_in_play[1])
         screen.blit(p2_images[game["p2"].cards_in_play[1]], cards_in_play_rects["p2c2"])
     # Blit Player 1's (computer) cards_in_play:
     if len(game["p1"].cards_in_play) >= 1:
+        print("blitting p1's 1st card now: " + game["p1"].cards_in_play[0])
         screen.blit(p1_images[game["p1"].cards_in_play[0]], cards_in_play_rects["p1c1"])
     if len(game["p1"].cards_in_play) >= 2:
+        print("blitting p1's 2nd card now: " + game["p1"].cards_in_play[0])
         screen.blit(p1_images[game["p1"].cards_in_play[1]], cards_in_play_rects["p1c2"])
     # Blit Player 2's (user) trick_pile:
 #    for i in range(len(game["p2"].trick_pile)):
