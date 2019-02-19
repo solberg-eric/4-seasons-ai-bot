@@ -19,7 +19,7 @@ def play_trick(game):
             if player == "p2":
                 your_turn(game)
             else:
-                player_plays(game, minimax.get_best_play(game, i, player, play_order))
+                computer_plays(game, minimax.get_best_play(game, i, player, play_order))
             if play_order.index(player) == 0 and i == 0:
                 game["lead_suit"] = game[game["lead_player"]].cards_in_play[0][1]
 
@@ -34,7 +34,27 @@ def determine_play_order(game):
     return play_order
 
 # From self.play_trick()
-def player_plays(game, result):
+def your_turn(game):
+    """User's turn to play."""
+    while game["user_has_played"] == False:
+        for event in pygame.event.get(): # check to see if double clicking really fast creates bug and plays twice.
+
+            # Enable user to close program
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+            elif event.type == QUIT:
+                running = False
+
+            # If mouse is clicked, potentially do something
+            elif event.type == MOUSEBUTTONDOWN:
+                mouse_pos = x, y = pygame.mouse.get_pos()
+                click.check_location_of_click(game, mouse_pos)
+
+    game["user_has_played"] = False
+
+# From self.play_trick()
+def computer_plays(game, result):
     """Player 1 play a card."""
     print("Best play: " + str(result[1]))
     print("Resulting value: " + str(result[0]))
@@ -46,18 +66,6 @@ def player_plays(game, result):
             card_index = game["p1"].hand.index(result[1])
             card.play_card(game, card_index, "p1")
             break;
-
-# From self.play_trick()
-def your_turn(game):
-    """User's turn to play."""
-    # change the beginning of this to call pygame backend stuff
-    while True:
-        response = input("What card does P2 play? (enter as string): ")
-        print()
-        if response in game["p2"].hand:
-            card_index = game["p2"].hand.index(response)
-            card.play_card(game, card_index, "p2")
-            break
 
 # From self.play_trick() or minimax.if_trick_complete()
 def setup_next_trick(game):

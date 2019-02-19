@@ -38,7 +38,9 @@ def setup_game(depth_factor):
         "player_winning_trick" : None, # Eventually (string): "p1" or "p2".
         "hand_finished" : False,
         "value" : 0, # (int): Value of potential game state (used in evaluation function during minimax algorithm).
-        "player_optimizing" : "p1" # (string): Either "p1" or "p2". Denotes which player is being optimized in minimax algorithm.
+        "player_optimizing" : "p1", # (string): Either "p1" or "p2". Denotes which player is being optimized in minimax algorithm.
+        "user_has_played" : False, # added for pygame purposes
+        "turn" : "p2c1" # added for pygame purposes. remember that user is p2
     }
     return game
 
