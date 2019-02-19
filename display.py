@@ -15,6 +15,10 @@ cards_in_play_rects = {
     "p1c1" : pygame.Rect((230, 90), (184, 250)),
     "p1c2" : pygame.Rect((205, 73), (184, 250))
 }
+trick_pile_rects = {
+    "p2_tricks" : pygame.Rect((791, 360), (184, 250)),
+    "p1_tricks" : pygame.Rect((791, -18), (184, 250))
+}
 
 # From setup.setup_game()
 def create_hand(player_num): # pygame
@@ -60,11 +64,21 @@ def blit_game(game):
         print("blitting p1's 2nd card now: " + game["p1"].cards_in_play[0])
         screen.blit(p1_images[game["p1"].cards_in_play[1]], cards_in_play_rects["p1c2"])
     # Blit Player 2's (user) trick_pile:
-#    for i in range(len(game["p2"].trick_pile)):
-#        screen.blit(p2_images[game["p2"].trick_pile[i]], ((i+1)*27, 648))
+    x = 0
+    y = 0
+    for i in range(len(game["p2"].trick_pile)):
+        y = i%4
+        if i%4 == 0 and not i == 0:
+            x += 1
+        screen.blit(p2_images[game["p2"].trick_pile[i]], (650+(27*x), 450+(48*y)))
     # Blit Player 1's (computer) trick_pile:
-#    for i in range(len(game["p1"].hand)-1, -1, -1):
-#        screen.blit(p1_images[game["p1"].trick_pile[i]], (i*27+27, -198))
+    x = 0
+    y = 0
+    for i in range(len(game["p1"].trick_pile)):
+        y = i%4
+        if i%4 == 0 and not i == 0:
+            x += 1
+        screen.blit(p1_images[game["p1"].trick_pile[i]], (1028-(27*x), 0-(48*y)))
 
     pygame.display.flip()
 
