@@ -1,5 +1,7 @@
 """Main script."""
 
+import pygame
+from pygame.locals import *
 import setup
 import winner
 import trick
@@ -10,6 +12,9 @@ depth_factor = 1
  
 # 'game' is a dictionary that stores important values used throughout the program.   
 game = setup.setup_game(depth_factor)
+
+# game_py = call to setup important frontend variables
+
 
 # Until the game has ended, continue looping (playing the game).
 while not winner.has_won(game):
