@@ -38,36 +38,36 @@ def check_card(game, mouse_pos):
         cards_in_hand = len(game["p2"].hand)
         for i in range(1, cards_in_hand):
             if i*27 <= x < (i+1)*27 and 648 <= y < 700:
-                card.play(game, i-1, "p2")
+                card.play_card(game, i-1, "p2")
                 break
             elif cards_in_hand*27 <= x < cards_in_hand*27+184 and 648 <= y < 700:
-                card.play(game, cards_in_hand-1, "p2")
+                card.play_card(game, cards_in_hand-1, "p2")
                 break
     # Player 1 plays 1st card
     elif game["turn"] == "p1c1":
         for i in range(len(game["p1"].hand)-1, 0, -1):
             if i*27+184 <= x < (i+1)*27+184 and 0 <= y < 52:
-                card.play(game, i, "p1")
+                card.play_card(game, i, "p1")
                 break
             elif 27 <= x < 27+184 and 0 <= y < 52:
-                card.play(game, 0, "p1")
+                card.play_card(game, 0, "p1")
                 break
     # User plays 2nd card
     elif game["turn"] == "p2c2":
         cards_in_hand = len(game["p2"].hand)
         for i in range(1, cards_in_hand):
             if i*27 <= x <= (i+1)*27 and 648 <= y <= 700:
-                card.play(game, i-1, "p2")
+                card.play_card(game, i-1, "p2")
                 break
             elif cards_in_hand*27 <= x <= cards_in_hand*27+184 and 648 <= y <= 700:
-                card.play(game, cards_in_hand-1, "p2")
+                card.play_card(game, cards_in_hand-1, "p2")
                 break
     # Player 1 plays 2nd card
     elif game["turn"] == "p1c2":
         for i in range(len(game["p1"].hand)-1, 0, -1):
             if i*27+184 <= x < (i+1)*27+184 and 0 <= y < 52:
-                card.play(game, i, "p1")
+                card.play_card(game, i, "p1")
                 break
             elif 27 <= x < 27+184 and 0 <= y < 52:
-                card.play(game, 0, "p1")
+                card.play_card(game, 0, "p1")
                 break

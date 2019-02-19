@@ -33,7 +33,7 @@ def setup_game(depth_factor):
         "alpha" : -float("Inf"), # Used in minimax algorithm
         "beta" : float("Inf"), # Used in minimax algorithm
         "trump_order" : ["Hearts", "Spades", "Diamonds", "Clubs"],
-        "lead_player" : lead_player(), # (string): "p1" for player one; "p2" for player two.
+        "lead_player" : "p2", # (string): "p1" for player one; "p2" for player two.
         "lead_suit" : None, # (string): "H", "S", "D", or "C".
         "player_winning_trick" : None, # Eventually (string): "p1" or "p2".
         "hand_finished" : False,
@@ -43,23 +43,3 @@ def setup_game(depth_factor):
         "turn" : "p2c1" # added for pygame purposes. remember that user is p2
     }
     return game
-
-# From self.setup_game
-def lead_player():
-    """Asks the user who the lead player of the game is. 
-    
-    Args: 
-        none
-    
-    Returns: 
-        (string): 'p1' or 'p2'.
-    """
-    while True:
-        response = input("Are you the starting player? (y/n): ")
-        print()
-        if response == "y":
-            return "p1"
-            break
-        elif response == "n":
-            return "p2"
-            break

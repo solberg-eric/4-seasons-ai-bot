@@ -1,9 +1,14 @@
 """Play a trick."""
 
+import sys
+import time
+import pygame
+from pygame.locals import *
 import display
 import minimax
 import evaluate
 import card
+import click
 
 # From main
 def play_trick(game):
@@ -20,6 +25,10 @@ def play_trick(game):
                 your_turn(game)
             else:
                 computer_plays(game, minimax.get_best_play(game, i, player, play_order))
+                if play_order.index(player) == 0 and i == 0 or play_order.index(player) == 1 and i == 1:
+                    game["turn"] = "p2c1"
+                else:
+                    game["turn"] = "p2c2"
             if play_order.index(player) == 0 and i == 0:
                 game["lead_suit"] = game[game["lead_player"]].cards_in_play[0][1]
 
@@ -42,9 +51,9 @@ def your_turn(game):
             # Enable user to close program
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    running = False
+                    sys.exit()
             elif event.type == QUIT:
-                running = False
+                sys.exit()
 
             # If mouse is clicked, potentially do something
             elif event.type == MOUSEBUTTONDOWN:

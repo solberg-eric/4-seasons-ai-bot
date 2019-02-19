@@ -45,14 +45,14 @@ def blit_game(game):
         screen.blit(p1_images[game["p1"].hand[i]], (i*27+27, -198))
     # Blit Player 2's (user) cards_in_play:
     if len(game["p2"].cards_in_play) >= 1:
-        screen.blit(p2_images[game["p2"].cards_in_play[0]], game["cards_in_play_rects"]["p2c1"])
+        screen.blit(p2_images[game["p2"].cards_in_play[0]], cards_in_play_rects["p2c1"])
     if len(game["p2"].cards_in_play) >= 2:
-        screen.blit(p2_images[game["p2"].cards_in_play[1]], game["cards_in_play_rects"]["p2c2"])
+        screen.blit(p2_images[game["p2"].cards_in_play[1]], cards_in_play_rects["p2c2"])
     # Blit Player 1's (computer) cards_in_play:
     if len(game["p1"].cards_in_play) >= 1:
-        screen.blit(p1_images[game["p1"].cards_in_play[0]], game["cards_in_play_rects"]["p1c1"])
+        screen.blit(p1_images[game["p1"].cards_in_play[0]], cards_in_play_rects["p1c1"])
     if len(game["p1"].cards_in_play) >= 2:
-        screen.blit(p1_images[game["p1"].cards_in_play[1]], game["cards_in_play_rects"]["p1c2"])
+        screen.blit(p1_images[game["p1"].cards_in_play[1]], cards_in_play_rects["p1c2"])
     # Blit Player 2's (user) trick_pile:
 #    for i in range(len(game["p2"].trick_pile)):
 #        screen.blit(p2_images[game["p2"].trick_pile[i]], ((i+1)*27, 648))
