@@ -56,16 +56,8 @@ def your_turn(game):
 # From self.play_trick()
 def computer_plays(game, result):
     """Player 1 play a card."""
-    print("Best play: " + str(result[1]))
-    print("Resulting value: " + str(result[0]))
-    # Set this to automatically play
-    while True:
-        response = input("Press ENTER to play the " + str(result[1]) + ": ")
-        print()
-        if response == "":
-            card_index = game["p1"].hand.index(result[1])
-            card.play_card(game, card_index, "p1")
-            break;
+card_index = game["p1"].hand.index(result[1])
+card.play_card(game, card_index, "p1")
 
 # From self.play_trick() or minimax.if_trick_complete()
 def setup_next_trick(game):
