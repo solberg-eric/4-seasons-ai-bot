@@ -16,10 +16,10 @@ def play_trick(game):
         for player in play_order: # Loop twice. For each loop, one player plays once. Is ultimately looped four times (if you include the parent 'for' loop) because each player plays two times.
             # update pygame display after every play
             display.print_hand(game["p1"].cards_in_play, game["p1"].hand, game["p1"].trick_pile, game["p2"].cards_in_play, game["p2"].hand, game["p2"].trick_pile, game["trump_order"])
-            if player == "p1":
-                player_plays(game, minimax.get_best_play(game, i, player, play_order))
+            if player == "p2":
+                your_turn(game)
             else:
-                opponent_plays(game)
+                player_plays(game, minimax.get_best_play(game, i, player, play_order))
             if play_order.index(player) == 0 and i == 0:
                 game["lead_suit"] = game[game["lead_player"]].cards_in_play[0][1]
 
@@ -48,8 +48,8 @@ def player_plays(game, result):
             break;
 
 # From self.play_trick()
-def opponent_plays(game):
-    """Player 2 play a card."""
+def your_turn(game):
+    """User's turn to play."""
     # change the beginning of this to call pygame backend stuff
     while True:
         response = input("What card does P2 play? (enter as string): ")

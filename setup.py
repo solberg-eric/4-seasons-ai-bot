@@ -22,7 +22,7 @@ def setup_game(depth_factor):
 
     # Creates Player One (p1) and Player Two (p2) with initial startingi values.
     p1 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
-    p2 = Player(["AH", "KH", "QH", "JH", "AS", "KS", "QS", "JS", "AD", "KD", "QD", "JD", "AC", "KC", "QC", "JC"], [], [0, 0], [], 0, 0, False)
+    p2 = Player(["JC", "QC", "KC", "AC", "JD", "QD", "KD", "AD", "JS", "QS", "KS", "AS", "JH", "QH", "KH", "AH"], [], [0, 0], [], 0, 0, False)
 
     # Store frequently used values pertaining to the game.
     game = {

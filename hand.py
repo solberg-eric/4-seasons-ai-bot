@@ -23,4 +23,6 @@ def arrange_cards_for_next_hand(game, player):
             for card in game[player].hand:
                 if rank in card and game["trump_order"][i][0] in card:
                     temp_hand.append(card)
+    if player == "p1":
+        temp_hand.reverse()
     game[player].hand = deepcopy(temp_hand)

@@ -1,4 +1,17 @@
-"""Prints to console."""
+"""Updates pygame display."""
+
+cards_in_play_rects = {
+    "p1c1" : pygame.Rect((230, 360), (184, 250)),
+    "p1c2" : pygame.Rect((255, 377), (184, 250)),
+    "p2c1" : pygame.Rect((230, 90), (184, 250)),
+    "p2c2" : pygame.Rect((205, 73), (184, 250))
+}
+
+
+
+
+
+
 
 # From trick.play_trick()
 def print_hand(player_one_cards_in_play, player_one_hand, player_one_trick_pile, player_two_cards_in_play, player_two_hand, player_two_trick_pile, trump):
