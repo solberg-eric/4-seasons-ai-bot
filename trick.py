@@ -10,6 +10,19 @@ import evaluate
 import card
 import click
 
+def print_test(game):
+    print()
+    print()
+    print()
+    print()
+    print()
+    print(game)
+    print()
+    print()
+    print()
+    print()
+    print()
+
 # From main
 def play_trick(game):
     """Play a trick. Returns: none."""
@@ -32,6 +45,7 @@ def play_trick(game):
                     game["turn"] = "p2c2"
             if play_order.index(player) == 0 and i == 0:
                 game["lead_suit"] = game[game["lead_player"]].cards_in_play[0][1]
+            print_test(game)
 
     setup_next_trick(game)
 
