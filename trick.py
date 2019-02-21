@@ -10,19 +10,6 @@ import evaluate
 import card
 import click
 
-def print_test(game):
-    print()
-    print()
-    print()
-    print()
-    print()
-    print(game)
-    print()
-    print()
-    print()
-    print()
-    print()
-
 # From main
 def play_trick(game):
     """Play a trick. Returns: none."""
@@ -103,6 +90,20 @@ def add_cards_to_trick_pile(game):
     for i in range(2):
         game[game["player_winning_trick"]].trick_pile.append(game["p1"].cards_in_play.pop())
         game[game["player_winning_trick"]].trick_pile.append(game["p2"].cards_in_play.pop())
+
+# Only called for testing purposes
+def print_test(game):
+    print()
+    print()
+    print()
+    print()
+    print()
+    print(game)
+    print()
+    print()
+    print()
+    print()
+    print()
 
 
     
