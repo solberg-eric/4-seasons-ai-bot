@@ -24,7 +24,11 @@ def play_trick(game):
             if player == "p2":
                 your_turn(game)
             else:
-                your_turn(game)
+                # Comment following line for Player vs. Computer mode.
+                #your_turn(game)
+                # Uncomment following line for Player vs. Computer mode.
+                computer_plays(game, minimax.get_best_play(game, i, player, play_order))
+
                 # pygame.time.delay(1000) # not working at all.
                 if play_order.index(player) == 0 and i == 0 or play_order.index(player) == 1 and i == 1:
                     game["turn"] = "p2c1"
