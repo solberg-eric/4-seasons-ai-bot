@@ -44,12 +44,11 @@ def check_card(game, mouse_pos):
                 break
     # Player 1 plays 1st card
     elif game["turn"] == "p1c1":
+        if 27 <= x < 27+184 and 0 <= y < 52:
+            card.play_card(game, 0, "p1")
         for i in range(len(game["p1"].hand)-1, 0, -1): # might have to change just like i did to p2...meaning it might not play last trick in hand. (put elif block in front of for loop to fix)
             if i*27+184 <= x < (i+1)*27+184 and 0 <= y < 52:
                 card.play_card(game, i, "p1")
-                break
-            elif 27 <= x < 27+184 and 0 <= y < 52:
-                card.play_card(game, 0, "p1")
                 break
     # User plays 2nd card
     elif game["turn"] == "p2c2":
@@ -62,10 +61,9 @@ def check_card(game, mouse_pos):
                 break
     # Player 1 plays 2nd card
     elif game["turn"] == "p1c2":
+        if 27 <= x < 27+184 and 0 <= y < 52:
+            card.play_card(game, 0, "p1")
         for i in range(len(game["p1"].hand)-1, 0, -1):
             if i*27+184 <= x < (i+1)*27+184 and 0 <= y < 52:
                 card.play_card(game, i, "p1")
-                break
-            elif 27 <= x < 27+184 and 0 <= y < 52:
-                card.play_card(game, 0, "p1")
                 break
