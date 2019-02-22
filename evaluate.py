@@ -26,6 +26,10 @@ def determine_winner_of_trick(game):
     if (game[second_player].cards_in_play_ranks[1] > winning_card_value):
         game["player_winning_trick"] = second_player
         winning_card_value = game[second_player].cards_in_play_ranks[1]
+    if game["player_winning_trick"] == "p1":
+        game["turn"] = "p1c1"
+    else:
+        game["turn"] = "p2c2"
 
 # From self.determine_winner_of_trick()
 def set_card_ranks(game):

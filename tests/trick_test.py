@@ -1,4 +1,6 @@
 import trick
+import display
+import pygame
 
 # def test_play_trick():
 
@@ -8,7 +10,9 @@ def test_determine_play_order(game):
     game["lead_player"] = "p2"
     assert trick.determine_play_order(game) == ["p2", "p1"]
 
-# def test_your_turn():
+def test_your_turn(game):
+    trick.your_turn(game)
+    assert game["p2"].cards_in_play == ["AH"] # have to press where "AH" would be
 
 def test_computer_plays(game):
     game["p1"].hand = ["QC", "KC", "KD"]
