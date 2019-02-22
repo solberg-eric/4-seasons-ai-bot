@@ -1,6 +1,5 @@
 import winner
 
-# Test winner.has_won()
 def test_has_won(game):
     game["p1"].hand = []
     game["p2"].hand = ["AH"]
