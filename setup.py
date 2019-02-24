@@ -1,7 +1,7 @@
 """Prepares for game."""
 
 # From main
-def setup_game(depth_factor):
+def setup_game(game_mode, depth_factor):
     """Prepare for game.
 
     Args: 
@@ -28,6 +28,7 @@ def setup_game(depth_factor):
     game = {
         "p1" : p1,
         "p2" : p2,
+        "game_mode" : game_mode,
         "depth_factor" : depth_factor, # Depth of search for minimax algoirthm (in tricks)
         "depth" : depth_factor * 4, # Depth of search for minimax algorithm (in turns). There are four turns per trick.
         "alpha" : -float("Inf"), # Used in minimax algorithm

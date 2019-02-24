@@ -1,5 +1,6 @@
 """Evaluates potential game states from minimax algorithm"""
 
+import sys # delete after bug fix
 import trick
 
 # From minimax.update_current_value() or minimax.if_trick_complete()
@@ -37,24 +38,31 @@ def set_card_ranks(game):
     players_list = ["p1", "p2"]
     for player in players_list:
         for card in game[player].cards_in_play:
-            if game["lead_suit"] in card:
-                if "A" in card:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 4 
-                elif "K" in card:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 3
-                elif "Q" in card:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 2
-                else:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 1
-            if game["trump_order"][0][0] in card:
-                if "A" in card:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 8
-                elif "K" in card:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 7
-                elif "Q" in card:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 6
-                else:
-                    game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 5
+            try:
+                if game["lead_suit"] in card:
+                    if "A" in card:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 4 
+                    elif "K" in card:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 3
+                    elif "Q" in card:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 2
+                    else:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 1
+                if game["trump_order"][0][0] in card:
+                    if "A" in card:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 8
+                    elif "K" in card:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 7
+                    elif "Q" in card:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 6
+                    else:
+                        game[player].cards_in_play_ranks[game[player].cards_in_play.index(card)] = 5
+            except: 
+                print("card: " + card)
+                print("cards in play: " + game[player].cards_in_play)
+                print("cards in play ranks: " + game[player].cards_in_play_ranks)
+                sys.exit()
+
 
 # From self.evaluate_game()
 def determine_gain(game):
