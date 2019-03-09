@@ -1,7 +1,7 @@
 import pytest
 from copy import deepcopy
 import sys
-sys.path.insert(0, "/Users/ericsolberg/Desktop/card_game")
+sys.path.insert(0, "/Users/ericsolberg/Desktop/card_game_python")
 print(sys.path)
 
 @pytest.fixture
